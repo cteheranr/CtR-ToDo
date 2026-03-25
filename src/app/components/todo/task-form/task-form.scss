@@ -1,0 +1,120 @@
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.drawer-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 101;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: #1e293b;
+    }
+    .btn-close {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+  }
+
+  form {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    flex: 1;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #475569;
+      }
+      input,
+      textarea,
+      select {
+        padding: 0.75rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-family: inherit;
+        &:focus {
+          outline: 2px solid #4f46e5;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 1.5rem;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    gap: 1rem;
+    button {
+      font-family: 'Fuzzy Bubbles', sans-serif;
+      flex: 1;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      &.btn-save {
+        background: #4f46e5;
+        color: white;
+        border: none;
+        &:disabled {
+          opacity: 0.5;
+        }
+      }
+      &.btn-cancel {
+        background: #f1f5f9;
+        color: #475569;
+        border: 1px solid #e2e8f0;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .drawer-content {
+    width: 100%;
+  }
+}

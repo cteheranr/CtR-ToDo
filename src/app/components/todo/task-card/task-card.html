@@ -1,0 +1,25 @@
+<div class="card" [ngClass]="task.priority">
+  <div class="card-header">
+    <span class="priority-dot" [title]="task.priority"></span>
+    <div class="actions">
+      @if (task.status !== 'Completado') {
+        <button class="btn-icon edit" (click)="onEdit.emit(task)" title="Editar">✏️</button>
+      }
+      <button class="btn-icon delete" (click)="onDelete.emit(task.id)" title="Eliminar">🗑️</button>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <h3 class="task-title">{{ task.title }}</h3>
+    @if (task.description) {
+      <p class="task-desc">{{ task.description }}</p>
+    }
+  </div>
+
+  <div class="card-footer">
+    <span class="date">{{ task.createdAt | date: 'shortTime' }}</span>
+    @if (task.status !== 'Completado') {
+      <button class="btn-move" (click)="onMove.emit(task)">{{ nextStepLabel }} →</button>
+    }
+  </div>
+</div>

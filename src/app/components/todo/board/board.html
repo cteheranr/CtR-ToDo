@@ -1,0 +1,55 @@
+<div class="board-wrapper">
+  <header class="board-header">
+    <div class="info">
+      <h1>Panel de Control</h1>
+      <p>Gestiona tus tareas en tiempo real</p>
+    </div>
+    <button class="btn-add" (click)="openCreateForm()">+ Nueva Tarea</button>
+  </header>
+
+  <main class="kanban-container">
+    <section class="column">
+      <div class="column-title todo">
+        Pendientes <span>{{ todoTasks.length }}</span>
+      </div>
+      <div class="task-list">
+        @for (t of todoTasks; track $index) {
+          <app-task-card [task]="t" (onEdit)="openEditForm($event)" (onMove)="moveTask($event)" (onDelete)="deleteTask($event)">
+          </app-task-card>
+        }
+      </div>
+    </section>
+
+    <section class="column">
+      <div class="column-title doing">
+        En Ejecución <span>{{ doingTasks.length }}</span>
+      </div>
+      <div class="task-list">
+        @for (t of doingTasks; track $index) {
+          <app-task-card [task]="t" (onMove)="moveTask($event)" (onDelete)="deleteTask($event)" (onEdit)="openEditForm($event)">
+          </app-task-card>
+        }
+      </div>
+    </section>
+
+    <section class="column">
+      <div class="column-title done">
+        Finalizadas <span>{{ doneTasks.length }}</span>
+      </div>
+      <div class="task-list">
+        @for (t of doneTasks; track $index) {
+          <app-task-card [task]="t" (onDelete)="deleteTask($event)" (onEdit)="openEditForm($event)">
+          </app-task-card>
+        }
+      </div>
+    </section>
+  </main>
+</div>
+
+<app-task-form
+  [isOpen]="isFormOpen"
+  [taskToEdit]="selectedTask"
+  (onClose)="isFormOpen = false"
+  (onSave)="saveTask($event)"
+>
+</app-task-form>
