@@ -11,6 +11,8 @@
 
   <div class="card-content">
     <h3 class="task-title">{{ task.title }}</h3>
+      <p class="task-priority" >Prioridad: <span [ngClass]="task.priority">{{ task.priority }}</span></p>
+
     @if (task.description) {
       <p class="task-desc">{{ task.description }}</p>
     }
