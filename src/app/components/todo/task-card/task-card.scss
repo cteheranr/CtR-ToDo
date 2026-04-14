@@ -13,9 +13,9 @@
   }
 
   // Colores por prioridad
-  &.high { border-left-color: #ef4444; }    // Rojo
-  &.medium { border-left-color: #f59e0b; }  // Naranja
-  &.low { border-left-color: #10b981; }     // Verde
+  &.alta { border-left-color: #ef4444; }    // Rojo
+  &.media { border-left-color: #f59e0b; }  // Naranja
+  &.baja { border-left-color: #10b981; }     // Verde
 
   .card-header {
     display: flex;
@@ -27,7 +27,6 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: currentColor;
     }
 
     .btn-icon {

@@ -1,6 +1,6 @@
 <div class="card" [ngClass]="task.priority">
   <div class="card-header">
-    <span class="priority-dot" [title]="task.priority"></span>
+    <span class="priority-dot" [ngClass]="task.priority"></span>
     <div class="actions">
       @if (task.status !== 'Completado') {
         <button class="btn-icon edit" (click)="onEdit.emit(task)" title="Editar">✏️</button>
