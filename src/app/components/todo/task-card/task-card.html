@@ -19,7 +19,7 @@
   </div>
 
   <div class="card-footer">
-    <span class="date">{{ task.createdAt | date: 'shortTime' }}</span>
+    <span class="date">{{ task.createdAt | date: 'medium' }}</span>
     @if (task.status !== 'Completado') {
       <button class="btn-move" (click)="onMove.emit(task)">{{ nextStepLabel }} →</button>
     }
